@@ -1,0 +1,54 @@
+# depslib dependency file v1.0
+1616175552 source:d:\codeblocks\projekt\projektnr1\binaryheap.cpp
+	"binaryheap.h"
+
+1616174061 d:\codeblocks\projekt\projektnr1\binaryheap.h
+	<stdio.h>
+	<stdlib.h>
+	<iostream>
+	<random>
+	<fstream>
+
+1615639854 source:d:\codeblocks\projekt\projektnr1\dynamicarray.cpp
+	"dynamicarray.h"
+
+1615638322 d:\codeblocks\projekt\projektnr1\dynamicarray.h
+	<stdio.h>
+	<stdlib.h>
+	<iostream>
+	<random>
+	<fstream>
+
+1615638500 source:d:\codeblocks\projekt\projektnr1\twodirectionlist.cpp
+	"twodirectionlist.h"
+
+1615638284 d:\codeblocks\projekt\projektnr1\twodirectionlist.h
+	<random>
+	<iostream>
+	<fstream>
+
+1616416182 source:d:\codeblocks\projekt\projektnr1\main.cpp
+	<stdio.h>
+	<cstdlib>
+	<stdlib.h>
+	<iostream>
+	<random>
+	<stdlib.h>
+	<iomanip>
+	<windows.h>
+	"dynamicarray.h"
+	"twodirectionlist.h"
+	"binaryheap.h"
+	"treebst.h"
+
+1616415584 source:d:\codeblocks\projekt\projektnr1\treebst.cpp
+	"treebst.h"
+
+1616414867 d:\codeblocks\projekt\projektnr1\treebst.h
+	<stdio.h>
+	<stdlib.h>
+	<iostream>
+	<random>
+	<fstream>
+	<iomanip>
+
