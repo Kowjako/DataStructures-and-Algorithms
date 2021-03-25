@@ -15,4 +15,6 @@ Projekt przestawia realizację podstawowych struktur danych takich jak
 ### Badanie złożoności czasowej dla realizowanych funkcji
 W gąłęzi ***raport*** można znaleźć raport gdzie przedstawiono załeżności czasowe dla każdej struktury w zależności od wykonywanej operacji
 ### Pomiar czasu
-Pomiar czasu był dokonany za pomocą 
+Pomiar czasu był dokonany za pomocą **QueryPerformanceCounter()**
+#### Przykład wykorzystania funkcji pomiaru czasu:
+
