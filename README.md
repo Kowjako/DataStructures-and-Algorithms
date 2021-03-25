@@ -35,3 +35,8 @@ void main(void)
    elapsed = read_QPC() - start;
    cout << "Time [ms] = " << setprecision(0) << (1000.0 * elapsed)/frequency << endl;
 } 
+```
+### Równiez w repozytorium można znaleźć 🔎
+1️⃣ Realizacja stosu i kolejki za pomocą tablicy dynamicznej
+2️⃣ Realizacja stosu i kolejki za pomocą listy
+3️⃣ Realizcja listy jednokierunkowej
