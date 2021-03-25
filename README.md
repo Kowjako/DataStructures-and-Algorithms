@@ -1,5 +1,5 @@
 # SDiZO —  Projekt Nr. 1 🏁
-Projekt przestawia realizację podstawowych struktur danych takich jak  
+Projekt przedstawia realizację podstawowych struktur danych takich jak  
 1️⃣ Tablica dynamiczna  
 2️⃣ Lista jednokierunkowa  
 3️⃣ Lista dwukierunkiowa  
