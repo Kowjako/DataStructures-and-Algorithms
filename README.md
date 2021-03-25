@@ -1,10 +1,9 @@
 # SDiZO —  Projekt Nr. 1 🏁
 Projekt przedstawia realizację podstawowych struktur danych takich jak  
 1️⃣ Tablica dynamiczna  
-2️⃣ Lista jednokierunkowa  
-3️⃣ Lista dwukierunkiowa  
-4️⃣ Kopiec binarny Max-Type  
-5️⃣ Drzewo BST   
+2️⃣ Lista dwukierunkiowa  
+3️⃣ Kopiec binarny Max-Type  
+4️⃣ Drzewo BST   
 ### Dla każdej struktury realizowane następne funkcje 💡
 - Operacje dodawnia na początku, w środek oraz koniec
 - Operacje usuwania na początku, w środku oraz końca 
