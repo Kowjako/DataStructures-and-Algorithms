@@ -37,6 +37,6 @@ void main(void)
 } 
 ```
 ### Równiez w repozytorium można znaleźć 🔎
-1️⃣ Realizacja stosu i kolejki za pomocą tablicy dynamicznej
-2️⃣ Realizacja stosu i kolejki za pomocą listy
-3️⃣ Realizcja listy jednokierunkowej
+1️⃣ Realizacja stosu i kolejki za pomocą tablicy dynamicznej  
+2️⃣ Realizacja stosu i kolejki za pomocą listy  
+3️⃣ Realizcja listy jednokierunkowej  
