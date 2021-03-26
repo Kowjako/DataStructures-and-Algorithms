@@ -216,8 +216,11 @@ void workWithTree() {
         cout<<"2.Usuniecie elementu"<<endl;
         cout<<"3.Wyszukiwanie elementu"<<endl;
         cout<<"4.Wczytac z pliku"<<endl;
-        cout<<"5.Wyswietlic drzewo"<<endl;
-        cout<<"6.Koniec programu"<<endl;
+        cout<<"5.Rotacja w lewo"<<endl;
+        cout<<"6.Rotacja w prawo"<<endl;
+        cout<<"7.Algorytm DSW - rownowazenie"<<endl;
+        cout<<"8.Wyswietlic drzewo"<<endl;
+        cout<<"9.Koniec programu"<<endl;
         cin>>operationNumber;
         switch(operationNumber) {
             case 1:
@@ -242,6 +245,20 @@ void workWithTree() {
                 treeBST.readFromFile(tmpLocation);
                 break;
             case 5:
+                cout<<"Wprowadz klucz wierzcholka"<<endl;
+                cin>>tmpNumber;
+                treeBST.leftRotation(treeBST.findElement(tmpNumber));
+                break;
+            case 6:
+                cout<<"Wprowadz klucz wierzcholka"<<endl;
+                cin>>tmpNumber;
+                treeBST.rightRotation(treeBST.findElement(tmpNumber));
+                break;
+            case 7:
+                cout<<"Wykonanie rownowazenia algroytmem DSW..."<<endl;
+                treeBST.algorithmDSW();
+                break;
+            case 8:
                 treeBST.showTree(treeBST.root,0);
                 break;
             default:
@@ -254,8 +271,8 @@ void workWithTree() {
 int main()
 {
     QueryPerformanceFrequency((LARGE_INTEGER*)&frequency);
-    int i;
-    /*do {
+
+    do {
         cout<<"Witam w Projekcie Nr.1"<<endl;
         cout<<"Prosze wybrac strukture do sprawdzania"<<endl;
         cout<<"1. Tablica dynamiczna"<<endl;
@@ -276,21 +293,7 @@ int main()
             default:
                     break;
         }
-    } while(structNumber!=5); */
-
-    /*TreeBST tree;
-    int sizeVar = 40000;
-    for(int i=0;i<sizeVar;i++) {
-        tree.addValue(dist(gen));
     }
-    double sum = 0;
-
-    for(int i=0;i<100;i++) {
-        start = read_QPC();
-        tree.deleteVertex(dist(gen));
-        elapsed = read_QPC() - start;
-        sum+=elapsed;
-    }
-    cout << "Time [ns] = " << (1000.0*1000.0*1000.0 * sum) /(frequency*100)<<endl; */
+    while(structNumber!=5);
 	return(0);
 }

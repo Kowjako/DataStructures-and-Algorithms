@@ -7,6 +7,7 @@
 #include <random>
 #include <fstream>
 #include <iomanip>
+#include <math.h>
 
 struct nodeBST {
     int value;
@@ -23,6 +24,7 @@ class TreeBST
         TreeBST();
         virtual ~TreeBST();
 
+        int counter = 0;    //zmienna dla algorytmu DSW
         nodeBST* root = NULL;
 
         void addValue(int value);
@@ -31,6 +33,12 @@ class TreeBST
         void deleteVertex(int value);
         nodeBST* getMaxNode(nodeBST* parent);
         nodeBST* findElement(int value);
+
+        void leftRotation(nodeBST* root);   //funkcja rotacji w lewo
+        void rightRotation(nodeBST* root);  //funkcja rotacji w prawo
+        void algorithmDSW();
+        void numberOfNodes(nodeBST* root); //funkcja pomocnicza dla algorytmu DSW
+
         void showTree(nodeBST* startNode, long n);
         void readFromFile(string filename);
 
