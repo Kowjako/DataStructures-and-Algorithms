@@ -12,7 +12,7 @@ Projekt przedstawia realizację podstawowych struktur danych takich jak
 - Funkcje rotacji w lewo oraz prawo względem dowolnego wierzchołka
 - Równoważenie drzewa Algorytmem DSW (``Day-Stout-Warren``)
 ### Badanie złożoności czasowej dla realizowanych funkcji 📝
-W gąłęzi ***raport*** można znaleźć raport gdzie przedstawiono załeżności czasowe dla każdej struktury w zależności od wykonywanej operacji
+W gąłęzi ***Project*** można znaleźć raport gdzie przedstawiono załeżności czasowe dla każdej struktury w zależności od wykonywanej operacji
 ### Pomiar czasu ⌚
 Pomiar czasu był dokonany za pomocą **QueryPerformanceCounter()**
 #### Przykład realizacji funkcji pomiaru czasu:
