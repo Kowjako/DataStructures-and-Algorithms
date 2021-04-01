@@ -18,6 +18,7 @@ void TreeBST::clearTree(nodeBST* node) {
         clearTree(leftItem);
         free(node);
         node = NULL;
+        balanced = false;
     }
 }
 
@@ -244,6 +245,10 @@ void TreeBST::rightRotation(nodeBST* rotRoot) {
 }
 
 void TreeBST::algorithmDSW() {
+    if(balanced) {
+        cout<<"Drzewo juz jest zrownowazone"<<endl;
+        return;
+    }
     /** Etap 1 - Prostowanie **/
     nodeBST* startNode = root;
     while(startNode!=NULL) {
@@ -279,6 +284,7 @@ void TreeBST::algorithmDSW() {
         }
         startNode = root;  //po rotacjach aktualizujemy startNode na nowy korzen
     }
+    balanced = true;
 }
 
 void TreeBST::numberOfNodes(nodeBST* root) {

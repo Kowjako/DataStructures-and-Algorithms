@@ -192,7 +192,8 @@ void workWithHeap() {
             case 3:
                 cout<<"Wprowadz liczbe"<<endl;
                 cin>>tmpNumber;
-                bHeap.findElement(0,tmpNumber);
+                if(bHeap.findElement(0,tmpNumber)) cout<<"Znaleziony"<<endl;
+                else cout<<"Nie ma takiego elementu"<<endl;
                 break;
             case 4:
                 cout<<"Wprowadz lokalizacje pliku np. D://dane.txt"<<endl;
@@ -237,6 +238,7 @@ void workWithTree() {
                 cout<<"Wprowadz liczbe"<<endl;
                 cin>>tmpNumber;
                 if(treeBST.findElement(tmpNumber)) cout<<"Element znaleziony"<<endl;
+                else
                 cout<<"Element nie znaleziony"<<endl;
                 break;
             case 4:
@@ -265,14 +267,14 @@ void workWithTree() {
                 break;
         }
 
-    } while(operationNumber!=6);
+    } while(operationNumber!=9);
 }
 
 int main()
 {
     QueryPerformanceFrequency((LARGE_INTEGER*)&frequency);
 
-    do {
+     do {
         cout<<"Witam w Projekcie Nr.1"<<endl;
         cout<<"Prosze wybrac strukture do sprawdzania"<<endl;
         cout<<"1. Tablica dynamiczna"<<endl;
@@ -295,5 +297,6 @@ int main()
         }
     }
     while(structNumber!=5);
+
 	return(0);
 }

@@ -6,6 +6,7 @@
 #include <iostream>
 #include <random>
 #include <fstream>
+#include <cmath>
 using namespace std;
 
 class BinaryHeap

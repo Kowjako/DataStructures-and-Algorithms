@@ -33,6 +33,7 @@ void TwoDirectionList::readFromFile(string filename) {
                 in>>temporaryInt;
                 tmpNode = addItem(tmpNode,temporaryInt);
             }
+            endNode = tmpNode; /*tworzenie koncowego wskaznika */
         }
     }
 }
@@ -56,12 +57,15 @@ void TwoDirectionList::fillTwoDirectionList() {
 }
 
 void TwoDirectionList::showTwoDirectionList() {
+    if(sizeVar==0) return;
     node* tmpNode = startNode; /* poczatkowy wypisujemy osobno bo nie ma na niego wskaznika */
     for(int i=0;i<sizeVar;i++) {
         cout<<tmpNode->nodeValue<<"\t";
         tmpNode = tmpNode->nextNode;
     }
     cout<<endl;
+    cout<<"START NODE "<<startNode->nodeValue<<endl;
+    cout<<"END NODE "<<endNode->nodeValue<<endl;
 }
 
 void TwoDirectionList::addToStartItem(int number) {
@@ -109,7 +113,8 @@ void TwoDirectionList::addToPosition(int position, int item) {
         newNode->nextNode = tmpNode; /*przypisanie nastepnego wezla jako wezla na danej pozycji*/
         newNode->nodeValue = item;
         newNode->prevNode = tmpNode->prevNode; /* przypisanie poprzedniego wezla za pomoca adresu poprzedniego wezla aktualnego wezla */
-        tmpNode->prevNode->nextNode = newNode; /* poprzedni wezel do aktulanego musi wskazywac na nastepny jako nowy dodany */
+        if(tmpNode!=startNode) tmpNode->prevNode->nextNode = newNode; /* poprzedni wezel do aktulanego musi wskazywac na nastepny jako nowy dodany */
+        if(tmpNode == startNode) startNode = newNode;
         tmpNode->prevNode = newNode; /* element byl dodany na tej pozycji wiec aktualny wezel musi wskazywac na ten nowy wstawiony element */
         sizeVar++;
     }
@@ -119,10 +124,16 @@ void TwoDirectionList::removeFromStart() {
     if(sizeVar==0) cout<<"Lista jest pusta"<<endl;
     else {
         node* newStartNode = startNode->nextNode; /*aktualny element poczatkowy */
-        startNode->nextNode->prevNode = NULL;/* usuniecie poczatkowego elementu powoduje ze nastpeny nie ma wskaznika na poprzedni */
-        free(startNode);
-        startNode = NULL;
-        startNode = newStartNode;
+        if(sizeVar!=1) startNode->nextNode->prevNode = NULL;/* usuniecie poczatkowego elementu powoduje ze nastpeny nie ma wskaznika na poprzedni */
+        if(startNode!=endNode) {
+            free(startNode);
+            startNode = newStartNode;
+        }
+        else {
+            free(startNode);
+            startNode = NULL;
+            endNode = NULL;
+        }
         sizeVar--;
     }
 }
@@ -131,10 +142,16 @@ void TwoDirectionList::removeFromEnd() {
     if(sizeVar==0) cout<<"Lista jest pusta"<<endl;
     else {
         node* newEndNode = endNode->prevNode;
-        endNode->prevNode->nextNode = NULL; /*usuniecie koncowego wezla powoduje ze wskaznik na nastpeny wezel wezla przedostatniego bedzie NULL */
-        free(endNode);
-        endNode = NULL;
-        endNode = newEndNode;
+        if(sizeVar!=1) endNode->prevNode->nextNode = NULL; /*usuniecie koncowego wezla powoduje ze wskaznik na nastpeny wezel wezla przedostatniego bedzie NULL */
+        if(endNode!=startNode) {
+            free(endNode);
+            endNode = newEndNode;
+        }
+        else {
+            free(endNode);
+            endNode = NULL;
+            startNode = NULL;
+        }
         sizeVar--;
     }
 }
@@ -146,11 +163,35 @@ void TwoDirectionList::removeFromPosition(int position) {
         for(int i=0;i<position;i++) {
             tmpNode = tmpNode->nextNode; /* petla znajduje adres wezla na danej pozycji */
         }
-        tmpNode->prevNode->nextNode = tmpNode->nextNode; /* element poprzedni teraz wskazuje na element nastepny usuwanego wezla */
-        tmpNode->nextNode->prevNode = tmpNode->prevNode; /* element nastepny teraz wskazuje na adres elementu poprzedzajacego usuwany */
-        free(tmpNode);
-        tmpNode = NULL;
+        if(tmpNode!=startNode && tmpNode!=endNode) {
+            tmpNode->prevNode->nextNode = tmpNode->nextNode; /* element poprzedni teraz wskazuje na element nastepny usuwanego wezla */
+            tmpNode->nextNode->prevNode = tmpNode->prevNode; /* element nastepny teraz wskazuje na adres elementu poprzedzajacego usuwany */
+        }
+        if(tmpNode==startNode) {
+            if(tmpNode==endNode) {
+                free(startNode);
+                startNode = NULL;
+                endNode = NULL;
+                sizeVar--;
+                return;
+            }
+            else {
+                node* newStart = startNode->nextNode;
+                free(startNode);
+                startNode = newStart;
+                sizeVar--;
+                return;
+            }
+        }
+        if(tmpNode==endNode) {
+            startNode->nextNode = NULL;
+            free(endNode);
+            endNode=startNode;
+            sizeVar--;
+            return;
+        }
         sizeVar--;
+        free(tmpNode);
     }
 }
 

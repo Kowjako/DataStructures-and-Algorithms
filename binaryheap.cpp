@@ -12,10 +12,22 @@ BinaryHeap::~BinaryHeap()
 }
 
 void BinaryHeap::showBinaryHeap() {
-    for(int i=0;i<sizeVar;i++) {
-        cout<<heap[i]<<"\t";
+    int levels = log2(sizeVar)+1;
+    int i = 0;
+    int j = 1;
+    while(i < sizeVar) {
+        while((i < j) && (i < sizeVar)) {
+            for(int i = 0;i<levels*2;i++)
+                cout<<" ";
+            cout << heap[i] << " ";
+            for(int i = 0;i<levels;i++)
+                cout<<" ";
+            i++;
+        }
+        levels = levels/2;
+        cout << endl;
+        j = j * 2 + 1;
     }
-    cout<<endl;
 }
 
 void BinaryHeap::readFromFile(string filename) {
@@ -25,7 +37,7 @@ void BinaryHeap::readFromFile(string filename) {
         in>>temporarySize;
         if(in.fail()) cout<<"Blad podczas odczytywania rozmiaru"<<endl;
         else {
-            for(int i=0;i<temporarySize-1;i++) {
+            for(int i=0;i<temporarySize;i++) {
                 in>>temporaryInt;
                 if(in.fail()) cout<<"Blad odczytywania wartosci"<<endl;
                 else
@@ -48,7 +60,14 @@ void BinaryHeap::addItem(int item) {
 }
 
 void BinaryHeap::deleteVertex() {
+    if(sizeVar == 0) return;
     int *tmp = (int*)realloc(heap, sizeof(int)*(sizeVar-1));
+    if(sizeVar==1) {
+        free(tmp);
+        heap = NULL;
+        sizeVar--;
+        return;
+    }
     tmp[0] = heap[sizeVar-1]; /*usuniecie szczytu jako zamiana na ostatni element */
     sizeVar--;
     normalize(0); /* usuniecie szczytu wymaga normalizacji od korzenia */

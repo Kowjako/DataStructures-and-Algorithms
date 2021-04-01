@@ -3,6 +3,7 @@
 DynamicArray::DynamicArray(int rozmiar = 0)
 {
     this->sizeVar = rozmiar;
+    dynamicArrayptr = (int*)calloc(sizeVar, sizeof(int));
 }
 DynamicArray::DynamicArray()
 {
@@ -10,6 +11,7 @@ DynamicArray::DynamicArray()
 }
 DynamicArray::~DynamicArray()
 {
+    if(dynamicArrayptr==NULL) return;
     free(dynamicArrayptr);
     sizeVar = 0;
     dynamicArrayptr = NULL;
