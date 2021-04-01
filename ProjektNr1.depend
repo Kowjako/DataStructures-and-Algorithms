@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1617304327 source:d:\codeblocks\projekt\projektnr1\binaryheap.cpp
+1617315002 source:d:\codeblocks\projekt\projektnr1\binaryheap.cpp
 	"binaryheap.h"
 
 1617304066 d:\codeblocks\projekt\projektnr1\binaryheap.h
@@ -28,7 +28,7 @@
 	<iostream>
 	<fstream>
 
-1617304676 source:d:\codeblocks\projekt\projektnr1\main.cpp
+1617304868 source:d:\codeblocks\projekt\projektnr1\main.cpp
 	<stdio.h>
 	<cstdlib>
 	<stdlib.h>
@@ -42,10 +42,10 @@
 	"binaryheap.h"
 	"treebst.h"
 
-1617303193 source:d:\codeblocks\projekt\projektnr1\treebst.cpp
+1617313784 source:d:\codeblocks\projekt\projektnr1\treebst.cpp
 	"treebst.h"
 
-1617303094 d:\codeblocks\projekt\projektnr1\treebst.h
+1617313775 d:\codeblocks\projekt\projektnr1\treebst.h
 	<stdio.h>
 	<stdlib.h>
 	<iostream>

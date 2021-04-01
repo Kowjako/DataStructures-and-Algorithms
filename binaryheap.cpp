@@ -61,14 +61,8 @@ void BinaryHeap::addItem(int item) {
 
 void BinaryHeap::deleteVertex() {
     if(sizeVar == 0) return;
-    int *tmp = (int*)realloc(heap, sizeof(int)*(sizeVar-1));
-    if(sizeVar==1) {
-        free(tmp);
-        heap = NULL;
-        sizeVar--;
-        return;
-    }
-    tmp[0] = heap[sizeVar-1]; /*usuniecie szczytu jako zamiana na ostatni element */
+    heap[0] = heap[sizeVar-1]; /*usuniecie szczytu jako zamiana na ostatni element */
+    heap = (int*)realloc(heap, sizeof(int)*(sizeVar-1));
     sizeVar--;
     normalize(0); /* usuniecie szczytu wymaga normalizacji od korzenia */
 }
@@ -77,22 +71,33 @@ void BinaryHeap::normalize(int index) {
     int temp;
     int leftItem = 2*index+1;
     int rightItem = 2*index+2;
-    if(leftItem<sizeVar) {
-        if(heap[index]<heap[leftItem]) { /*rekurencyjny algorytm uporzadkowania po lewej stronie potomka */
-            temp = heap[index];
-            heap[index] = heap[leftItem];
-            heap[leftItem] = temp;
-            normalize(leftItem);
-        }
-    }
-    if(rightItem<sizeVar) {
-        if(heap[index]<heap[rightItem]) { /*rekurrencyjny algorytm uporzadkowania po prawej stronie potomka */
+
+    if(rightItem<sizeVar) { /*sprawdzamy czy istnieje prawy potomek */
+        if(heap[rightItem]>heap[leftItem] && heap[rightItem]>heap[index]) { /*sprawdzamy czy jest wiekszy od lewego oraz rodzica */
             temp = heap[index];
             heap[index] = heap[rightItem];
             heap[rightItem] = temp;
             normalize(rightItem);
         }
+        else {  /*trafi gdy prawy jest mniejszy od lewego lub prawy jest mniejszy od rodzica*/
+            if(heap[leftItem]>heap[index]) { /*sprawdzamy czy lewy jest wiekszy niz rodzic */
+                temp = heap[index];
+                heap[index] = heap[leftItem];
+                heap[leftItem] = temp;
+                normalize(leftItem);
+            }
+        }
     }
+    else
+        if(leftItem<sizeVar) { /*tu trafimy gdy nie ma prawego potomka*/
+            if(heap[leftItem]>heap[index]) { /*sprawdzamy czy jest wiekszy od rodzica */
+                temp = heap[index];
+                heap[index] = heap[leftItem];
+                heap[leftItem] = temp;
+                normalize(leftItem);
+            }
+        }
+        else return;
 }
 
 void BinaryHeap::initializate(int sizeValue) {
