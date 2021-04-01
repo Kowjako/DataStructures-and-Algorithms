@@ -18,7 +18,6 @@ void TreeBST::clearTree(nodeBST* node) {
         clearTree(leftItem);
         free(node);
         node = NULL;
-        balanced = false;
     }
 }
 
@@ -212,10 +211,10 @@ void TreeBST::leftRotation(nodeBST* rotRoot) {
 
 void TreeBST::rightRotation(nodeBST* rotRoot) {
     if(root==NULL) return;
-    nodeBST* parent;
-    nodeBST* a; //wezel rotacji
-    nodeBST* b; //lewy potomek
-    nodeBST* c; //prawy potomek lewego potomka
+    nodeBST* parent = NULL;
+    nodeBST* a = NULL; //wezel rotacji
+    nodeBST* b = NULL; //lewy potomek
+    nodeBST* c = NULL; //prawy potomek lewego potomka
     /** Ustawianie adresow **/
     a = rotRoot; //wezel odnosnie ktorego bedzie rotacja
     parent = a->parentItem; //rodzic wezla rotacji
@@ -245,11 +244,8 @@ void TreeBST::rightRotation(nodeBST* rotRoot) {
 }
 
 void TreeBST::algorithmDSW() {
-    if(balanced) {
-        cout<<"Drzewo juz jest zrownowazone"<<endl;
-        return;
-    }
     /** Etap 1 - Prostowanie **/
+
     nodeBST* startNode = root;
     while(startNode!=NULL) {
         if(startNode->leftItem!=NULL) {
@@ -261,10 +257,10 @@ void TreeBST::algorithmDSW() {
         }
     }
     /** Etap 2 - Rownowazenie **/
+
     numberOfNodes(root);
     startNode = root;
     nodeBST* nextNode = NULL;
-
     int fullLevel = pow(2, log2(counter+1)) - 1; //m
     int difference = counter - fullLevel; //n-m
     while(difference!=0) {
@@ -284,7 +280,7 @@ void TreeBST::algorithmDSW() {
         }
         startNode = root;  //po rotacjach aktualizujemy startNode na nowy korzen
     }
-    balanced = true;
+    counter = 0;
 }
 
 void TreeBST::numberOfNodes(nodeBST* root) {

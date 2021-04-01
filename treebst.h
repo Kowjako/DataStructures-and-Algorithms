@@ -26,7 +26,6 @@ class TreeBST
 
         int counter = 0;    //zmienna dla algorytmu DSW
         nodeBST* root = NULL;
-        bool balanced = false;
 
         void addValue(int value);
         nodeBST* addNewNode(nodeBST* parent, int value);
